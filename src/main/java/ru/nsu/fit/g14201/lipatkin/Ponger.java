@@ -10,6 +10,13 @@ import se.sics.kompics.Negative;
 public class Ponger extends ComponentDefinition {
     Negative<PingPongPort> ppp = provides(PingPongPort.class);
 
+    // Component provides service A:
+    // - handles events that are specified as requests in A (Ping)
+    // - sends out events that are specified as indications in A (Pong)
+
+    // Input: Ping
+    // Output: Pong
+
     Handler<Ping> pingHandler = new Handler<Ping>(){
         public void handle(Ping event) {
             System.out.println("Got a Ping!");

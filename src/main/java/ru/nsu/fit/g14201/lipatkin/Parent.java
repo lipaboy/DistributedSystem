@@ -10,4 +10,9 @@ import se.sics.kompics.Init;
 public class Parent extends ComponentDefinition {
     Component pinger = create(Pinger.class, Init.NONE);
     Component ponger = create(Ponger.class, Init.NONE);
+
+    {
+        // Create channel
+        connect(pinger.getNegative(PingPongPort.class), ponger.getPositive(PingPongPort.class));
+    }
 }
