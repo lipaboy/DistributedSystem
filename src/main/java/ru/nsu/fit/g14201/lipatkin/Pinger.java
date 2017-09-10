@@ -4,12 +4,19 @@ import se.sics.kompics.ComponentDefinition;
 import se.sics.kompics.Handler;
 import se.sics.kompics.Positive;
 import se.sics.kompics.Start;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by RARETA on 09.09.2017.
  */
 public class Pinger extends ComponentDefinition {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Pinger.class);
+
     Positive<PingPongPort> ppp = requires(PingPongPort.class);
+
+    private long counter = 0;
 
     // From Positive to Negative. Negative requests a Ping and Positive sends out a Ping.
 
@@ -25,7 +32,8 @@ public class Pinger extends ComponentDefinition {
     };
     Handler<Pong> pongHandler = new Handler<Pong>(){
         public void handle(Pong event) {
-            System.out.println("Got a Pong!");
+            counter++;
+            LOG.info("Got Pong #{}!", counter);
             trigger(new Ping(), ppp);
         }
     };

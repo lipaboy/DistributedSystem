@@ -7,7 +7,7 @@ import se.sics.kompics.Kompics;
 
 public class Main {
     public static void main(String[] args) {
-        Kompics.createAndStart(Parent.class);
+        Kompics.createAndStart(Parent.class, 2);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
