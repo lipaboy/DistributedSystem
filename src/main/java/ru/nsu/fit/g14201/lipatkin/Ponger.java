@@ -27,7 +27,8 @@ public class Ponger extends ComponentDefinition {
         public void handle(Ping event) {
             counter++;
             LOG.info("Got Ping #{}!", counter);
-            trigger(new Pong(), ppp);
+            //trigger(new Pong(), ppp);
+            answer(event, new Pong());
         }
     };
     {

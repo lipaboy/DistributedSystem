@@ -7,9 +7,10 @@ import se.sics.kompics.Kompics;
 
 public class Main {
     public static void main(String[] args) {
-        Kompics.createAndStart(Parent.class, 2);
+        StringBuilder str;
+        Kompics.createAndStart(Parent.class, 3);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(10000);
         } catch (InterruptedException ex) {
             System.exit(1);
         }
